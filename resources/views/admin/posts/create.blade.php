@@ -1,3 +1,10 @@
+@extends('admin.layouts.app')
+
+@section('title')
+Novo Post
+@endsection 
+
+@section('content')
 <h1>Cadastrar novo post</h1>
 
 @if ($errors->any())
@@ -9,10 +16,6 @@
 @endif
 
 <form action="{{route('posts.store')}}" method="post">
-    @csrf
-            <input type="text" name="title" id="title" placeholder="Título" value="{{old('title')}}" />
-    <textarea name="content" id="content" cols="30" rows="4" placeholder="Conteúdo" >
-        {{old('content')}}
-    </textarea>
-    <button type="submit">Publicar </button>
+    @include('admin.posts._partials.form')
 </form>
+@endsection
