@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUpdatePost;
 use App\Models\Post;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
     public function index(){
 
-        $posts = Post::all();
+        $posts = Post::latest()->paginate(15);
 
         return View('admin.posts.index',[
             'posts' => $posts
@@ -64,5 +65,15 @@ class PostController extends Controller
         $post->update($request->all());
 
         return redirect()->route('posts.index');
+    }
+
+    public function search(Request $request){
+
+        $filters = $request->except('_token');
+
+        $posts = Post::where('title', 'LIKE' ,"%{$request->search}%")
+        ->orWhere('content', 'LIKE' ,"%{$request->search}%")
+        ->paginate();
+    return view('admin.posts.index', compact('posts','filters'));
     }
 }
