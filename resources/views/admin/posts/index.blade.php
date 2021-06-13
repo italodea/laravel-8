@@ -14,6 +14,8 @@ Listagem dos posts
 
 <a href="{{route('posts.create')}}">Cadastrar novo post</a>
 @foreach ($posts as $post)
+    <br>    
+    <img src="{{asset("storage/{$post->image}")}}" alt="{{$post->title}}" style="max-width:100px">
     <p>{{$post->title}} - <a href="{{route('posts.show', $post->id)}}">Ver detalhes</a> | <a href="{{route('posts.edit', $post->id)}}">Editar</a> </p>
 @endforeach
 

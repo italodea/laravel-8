@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreUpdatePost;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -24,8 +26,15 @@ class PostController extends Controller
     }
 
     public function store(StoreUpdatePost $request){
-        Post::create($request->all());
-        return redirect()->route('posts.index');
+        $data = $request->all();
+        if($request->image->isValid()){
+            $nameFile = Str::of($request->title)->slug('-').'.'.$request->image->getClientOriginalExtension();
+            $file = $request->image->storeAs('public/posts',$nameFile);
+            $file = str_replace('public/','',$file);
+            $data['image'] = $file;
+        }
+        Post::create($data);
+        return redirect()->route('posts.index')->with('message','Novo post criado');
     }
 
     public function show($id){
@@ -42,7 +51,9 @@ class PostController extends Controller
         if(!$post){
             return redirect()->route("posts.index");
         }
-
+        if(Storage::exists($post->image)){
+            Storage::delete($post->image);
+        }
         $post->delete();
 
         return redirect()->route('posts.index');
@@ -61,8 +72,19 @@ class PostController extends Controller
         if(!$post){
             return redirect()->route("posts.index");
         }
+        $data = $request->all();
 
-        $post->update($request->all());
+        if($request->image && $request->image->isValid()){
+            if(Storage::exists($post->image)){
+                Storage::delete($post->image);
+            }
+            $nameFile = Str::of($request->title)->slug('-').'.'.$request->image->getClientOriginalExtension();
+            $file = $request->image->storeAs('public/posts',$nameFile);
+            $file = str_replace('public/','',$file);
+            $data['image'] = $file;
+        }
+
+        $post->update($data);
 
         return redirect()->route('posts.index');
     }
