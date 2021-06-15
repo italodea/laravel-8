@@ -1,0 +1,45 @@
+.header-image{
+    height: 300px;
+    width: 100%;
+    background-color: black;
+}
+.header-image .title-post{
+    position: absolute;
+}
+.header-image .title-post h1{
+    color: #ffffff;
+    font-size: 30px;
+    opacity: 1;
+    text-shadow: 2px 2px 13px black;
+    line-height: 300px;
+}
+.header-image img{
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.header-image .title-post{
+    text-align: center;
+    width: 100%;
+}
+
+.container{
+    width: 100%;
+    text-align: center;
+}
+.container .text-container{
+    margin: auto;
+    margin-top: 50px;
+    text-align: center;
+    max-width: 1050px;
+}
+.delete-post-button,.edit-post-button{
+    color: #9ca3af;
+    padding: 4px 12px;
+}
+
+.actions-post{
+    position: absolute;
+    right: 0;
+}
