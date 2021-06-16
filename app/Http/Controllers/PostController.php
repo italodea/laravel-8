@@ -7,11 +7,15 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class PostController extends Controller
 {
     public function index(){
-
+        if (!Auth::check()) {
+            return redirect()->route('welcome');
+        }
         $posts = Post::latest()->paginate(15);
 
         return View('admin.posts.index',[
