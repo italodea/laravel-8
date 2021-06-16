@@ -7,6 +7,8 @@
     <title>@yield('title') - {{config('app.name')}}</title>
      <!-- Fonts -->
      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+     <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css"/>
+
 
      <!-- Styles -->
      <link rel="stylesheet" href="{{ asset('css/app.css') }}">

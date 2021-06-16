@@ -12,6 +12,7 @@
     opacity: 1;
     text-shadow: 2px 2px 13px black;
     line-height: 300px;
+    background-color: rgba(0,0,0,0.5);
 }
 .header-image img{
     height: 300px;
@@ -42,4 +43,130 @@
 .actions-post{
     position: absolute;
     right: 0;
+}
+.info-area{
+    display: inline;
+}
+.info-area i{
+    color: #9ca3af;
+    padding: 0px 5px 0px 8px;
+    position: absolute;
+    margin-top: 1px;
+}
+.info-area{
+    color: #9ca3af;
+    padding: 4px 12px 0px 0px;
+    font-family: 'Nunito';
+}
+.info-area p{
+    display: inline-block;
+    margin-left: 31px;
+}
+.posts{
+    text-align: center;
+    width: 100%;
+    max-width: 1000px;
+}
+.card{
+    width: 25%;
+    background-color: white;
+    box-shadow: 1px 2px 8px 0px grey;
+    border-radius: 5px;
+    margin: 12px;
+    padding: 12px 10px;
+    display: inline-block;
+}
+
+.card .card-image img{
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.card .card-title{
+    text-align: center;
+    margin-top: 10px;
+}
+.card .card-title a{
+    font-size: 18px;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
+
+.card .card-content p{
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
+.card .card-actions{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.card .card-actions a{
+    width: 80%;
+    background-color: darkseagreen;
+    padding: 7px 12px;
+    border-radius: 5px;
+}
+
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body{
+  background: #f2f2f2;
+}
+
+.search {
+  width: 60%;
+  position: relative;
+  display: flex;
+  margin: auto;
+}
+[type="text"]:focus{
+    --tw-ring-color: transparent;
+}
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 5px;
+  height: 36px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+  border: 3px solid #00B4CC;
+}
+
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 100%;
+  top: 50%;
+  left: 50%;
 }
